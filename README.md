@@ -1,10 +1,20 @@
-# spring-ecommerce
-Curso spring ecommerce básico
+# Proyecto Final BEDU
+Aplicacion de  Ecommerce básico llevado a cabo por el equipo 10 del curso Java Standard Edition de BEDU
+ 
+Integrantes:
+<ul>
+  <li>G. Jafeth Rosales           (rosalesjafeth36@gmail.com)</li>
+  <li>Gregorio Abraham Jurado  (jurado.abraham@gmail.com) </li>
+  <li> Anna Luz Gómez           (annaluzgp@gmail.com)</li>
+</ul>
 
-- Accede al curso Aprende a desarrollar un sitio ecommerce con Spring Boot (Mejorado): https://github.com/elivarl/springboot-ecommerce-course-detail
 
-Proyecto Spring Framework, Spring Boot, Servicios REST, Thymeleaf, Spring MVC, Spring Data JPA, Spring Security y deployment en Digital Ocean
+<div align="left">
 
-Curso en Youtube: https://www.youtube.com/playlist?list=PL3vxkSlW2FvU9z7Gz_Nn3E69HjEvv55_G
+
+
+<img align="center" src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" alt="catCoding" width="300"/>
+ </div>
+
 
 
