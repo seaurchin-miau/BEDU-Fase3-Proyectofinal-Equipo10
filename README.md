@@ -1,4 +1,5 @@
 # Proyecto Final BEDU
+
 Aplicacion de  Ecommerce básico llevado a cabo por el equipo 10 del curso Java Standard Edition de BEDU
  
 Integrantes:
@@ -13,7 +14,7 @@ Integrantes:
 
 
 
-<img align="center" src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" alt="catCoding" width="300"/>
+<img align="center" src="https://www.elsoldetoluca.com.mx/incoming/vbde6b-ecommerce.png/ALTERNATES/LANDSCAPE_768/ecommerce.png" alt="portada" width="300"/>
  </div>
 
 
