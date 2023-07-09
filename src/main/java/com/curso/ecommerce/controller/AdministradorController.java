@@ -2,8 +2,7 @@ package com.curso.ecommerce.controller;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +16,7 @@ import com.curso.ecommerce.service.IOrdenService;
 import com.curso.ecommerce.service.IUsuarioService;
 import com.curso.ecommerce.service.ProductoService;
 
+@Slf4j
 @Controller
 @RequestMapping("/administrador")
 public class AdministradorController {
@@ -29,8 +29,6 @@ public class AdministradorController {
 	
 	@Autowired
 	private IOrdenService ordensService;
-	
-	private Logger logg= LoggerFactory.getLogger(AdministradorController.class);
 
 	@GetMapping("")
 	public String home(Model model) {
@@ -56,13 +54,12 @@ public class AdministradorController {
 	
 	@GetMapping("/detalle/{id}")
 	public String detalle(Model model, @PathVariable Integer id) {
-		logg.info("Id de la orden {}",id);
+		log.info("Id de la orden {}",id);
 		Orden orden= ordensService.findById(id).get();
 		
 		model.addAttribute("detalles", orden.getDetalle());
 		
 		return "administrador/detalleorden";
 	}
-	
-	
+
 }

@@ -2,9 +2,9 @@ package com.curso.ecommerce.controller;
 
 import com.curso.ecommerce.model.Orden;
 import com.curso.ecommerce.model.Usuario;
+import com.curso.ecommerce.service.IOrdenService;
 import com.curso.ecommerce.service.IUsuarioService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,11 +18,10 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
-
-    private final Logger logger= LoggerFactory.getLogger(UsuarioController.class);
 
     @Autowired
     private IUsuarioService usuarioService;
@@ -41,7 +40,7 @@ public class UsuarioController {
 
     @PostMapping("/save")
     public String save(Usuario usuario) {
-        logger.info("Usuario registro: {}", usuario);
+        log.info("Usuario registro: {}", usuario);
         usuario.setTipo("USER");
         usuario.setPassword( passEncode.encode(usuario.getPassword()));
         usuarioService.save(usuario);
@@ -55,7 +54,7 @@ public class UsuarioController {
 
     @PostMapping("/acceder")
     public String acceder(Usuario usuario, HttpSession session) {
-        logger.info("Accesos : {}", usuario);
+        log.info("Accesos : {}", usuario);
 
         Optional<Usuario> user=usuarioService.findByEmail(usuario.getEmail());
         //logger.info("Usuario de db: {}", user.get());
@@ -69,7 +68,7 @@ public class UsuarioController {
                 return "redirect:/";
             }
         }else {
-            logger.info("Usuario no existe");
+            log.info("Usuario no existe");
         }
 
         return "redirect:/";
@@ -81,7 +80,7 @@ public class UsuarioController {
 
         Usuario usuario= usuarioService.findById(  Integer.parseInt(session.getAttribute("idusuario").toString()) ).get();
         List<Orden> ordenes= ordenService.findByUsuario(usuario);
-        logger.info("ordenes {}", ordenes);
+        log.info("ordenes {}", ordenes);
 
         model.addAttribute("ordenes", ordenes);
 
@@ -90,7 +89,7 @@ public class UsuarioController {
 
     @GetMapping("/detalle/{id}")
     public String detalleCompra(@PathVariable Integer id, HttpSession session, Model model) {
-        logger.info("Id de la orden: {}", id);
+        log.info("Id de la orden: {}", id);
         Optional<Orden> orden=ordenService.findById(id);
 
         model.addAttribute("detalles", orden.get().getDetalle());

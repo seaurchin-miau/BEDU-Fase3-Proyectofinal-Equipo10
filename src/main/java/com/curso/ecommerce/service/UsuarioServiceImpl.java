@@ -2,12 +2,13 @@ package com.curso.ecommerce.service;
 
 import com.curso.ecommerce.model.Usuario;
 import com.curso.ecommerce.repository.IUsuarioRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Data
 @Service
 public class UsuarioServiceImpl implements IUsuarioService {
 

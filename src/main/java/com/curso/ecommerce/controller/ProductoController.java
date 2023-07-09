@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.*;
+
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +24,11 @@ import com.curso.ecommerce.service.IUsuarioService;
 import com.curso.ecommerce.service.ProductoService;
 import com.curso.ecommerce.service.UploadFileService;
 import com.curso.ecommerce.service.UsuarioServiceImpl;
-
+@Slf4j
 @Controller
 @RequestMapping("/productos")
 public class ProductoController {
-	
-	private final Logger LOGGER = LoggerFactory.getLogger(ProductoController.class);
-	
+
 	@Autowired
 	private ProductoService productoService;
 	
@@ -51,7 +51,7 @@ public class ProductoController {
 	
 	@PostMapping("/save")
 	public String save(Producto producto, @RequestParam("img") MultipartFile file, HttpSession session) throws IOException {
-		LOGGER.info("Este es el objeto producto {}",producto);
+		log.info("Este es el objeto producto {}",producto);
 		
 		
 		Usuario u= usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString() )).get();
@@ -75,7 +75,7 @@ public class ProductoController {
 		Optional<Producto> optionalProducto=productoService.get(id);
 		producto= optionalProducto.get();
 		
-		LOGGER.info("Producto buscado: {}",producto);
+		log.info("Producto buscado: {}",producto);
 		model.addAttribute("producto", producto);
 		
 		return "productos/edit";
