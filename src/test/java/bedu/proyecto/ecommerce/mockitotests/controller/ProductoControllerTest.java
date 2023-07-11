@@ -20,7 +20,7 @@ import bedu.proyecto.ecommerce.model.Producto;
 import bedu.proyecto.ecommerce.model.Usuario;
 import bedu.proyecto.ecommerce.service.IUsuarioService;
 import bedu.proyecto.ecommerce.service.ProductoService;
-import bedu.proyecto.ecommerce.service.UploadFileService;
+import bedu.proyecto.ecommerce.util.UploadFileService;
 
 public class ProductoControllerTest {
 

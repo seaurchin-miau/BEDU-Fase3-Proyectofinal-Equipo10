@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Slf4j
@@ -21,7 +21,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     private IUsuarioService usuarioService;
 
     @Autowired
-    private BCryptPasswordEncoder bCrypt;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     HttpSession session;
@@ -34,7 +34,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
             log.info("Esto es el id del usuario: {}", optionalUser.get().getId());
             session.setAttribute("idusuario", optionalUser.get().getId());
             Usuario usuario= optionalUser.get();
-            return User.builder().username(usuario.getNombre()).password(bCrypt.encode(usuario.getPassword())).roles(usuario.getTipo()).build();
+            return User.builder().username(usuario.getNombre()).password(bCryptPasswordEncoder.encode(usuario.getPassword())).roles(usuario.getTipo()).build();
         }else {
             throw new UsernameNotFoundException("Usuario no encontrado");
         }
