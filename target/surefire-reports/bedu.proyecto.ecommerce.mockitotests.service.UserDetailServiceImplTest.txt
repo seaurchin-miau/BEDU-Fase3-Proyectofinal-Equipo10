@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: bedu.proyecto.ecommerce.mockitotests.service.UserDetailServiceImplTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.071 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.service.UserDetailServiceImplTest
-bedu.proyecto.ecommerce.mockitotests.service.UserDetailServiceImplTest.loadUserByUsername_UserFound_ReturnsUserDetails  Time elapsed: 0.005 s  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.109 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.service.UserDetailServiceImplTest
+bedu.proyecto.ecommerce.mockitotests.service.UserDetailServiceImplTest.loadUserByUsername_UserFound_ReturnsUserDetails  Time elapsed: 0.014 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "jakarta.servlet.http.HttpSession.setAttribute(String, Object)" because "this.session" is null
 	at bedu.proyecto.ecommerce.service.UserDetailServiceImpl.loadUserByUsername(UserDetailServiceImpl.java:35)
 	at bedu.proyecto.ecommerce.mockitotests.service.UserDetailServiceImplTest.loadUserByUsername_UserFound_ReturnsUserDetails(UserDetailServiceImplTest.java:51)

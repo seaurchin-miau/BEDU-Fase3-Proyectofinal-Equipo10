@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.1 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest
-bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testEdit  Time elapsed: 0.007 s  <<< ERROR!
+Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.13 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest
+bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testEdit  Time elapsed: 0.001 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.service.ProductoService.get(java.lang.Integer)" because "this.productoService" is null
 	at bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testEdit(ProductoControllerTest.java:92)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -64,7 +64,7 @@ java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.service.P
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testSave  Time elapsed: 0.058 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testSave  Time elapsed: 0.061 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.service.IUsuarioService.findById(java.lang.Integer)" because "this.usuarioService" is null
 	at bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testSave(ProductoControllerTest.java:73)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -126,7 +126,7 @@ java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.service.I
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testShow  Time elapsed: 0.003 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testShow  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.service.ProductoService.findAll()" because "this.productoService" is null
 	at bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testShow(ProductoControllerTest.java:47)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -254,7 +254,7 @@ java.lang.NullPointerException: Cannot invoke "Object.getClass()" because "bean"
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testDelete  Time elapsed: 0.002 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testDelete  Time elapsed: 0.005 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.service.ProductoService.get(java.lang.Integer)" because "this.productoService" is null
 	at bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testDelete(ProductoControllerTest.java:128)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -316,7 +316,7 @@ java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.service.P
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testUpdate  Time elapsed: 0.01 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.controller.ProductoControllerTest.testUpdate  Time elapsed: 0.026 s  <<< ERROR!
 org.mockito.exceptions.misusing.InvalidUseOfMatchersException: 
 
 Misplaced or misused argument matcher detected here:

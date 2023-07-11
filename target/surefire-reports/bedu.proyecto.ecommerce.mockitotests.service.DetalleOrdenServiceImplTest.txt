@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: bedu.proyecto.ecommerce.mockitotests.service.DetalleOrdenServiceImplTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.097 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.service.DetalleOrdenServiceImplTest
-bedu.proyecto.ecommerce.mockitotests.service.DetalleOrdenServiceImplTest.testSave  Time elapsed: 0.094 s  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.251 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.service.DetalleOrdenServiceImplTest
+bedu.proyecto.ecommerce.mockitotests.service.DetalleOrdenServiceImplTest.testSave  Time elapsed: 0.23 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.repository.IDetalleOrdenRepository.save(Object)" because "this.detalleOrdenRepository" is null
 	at bedu.proyecto.ecommerce.service.DetalleOrdenServiceImpl.save(DetalleOrdenServiceImpl.java:16)
 	at bedu.proyecto.ecommerce.mockitotests.service.DetalleOrdenServiceImplTest.testSave(DetalleOrdenServiceImplTest.java:26)

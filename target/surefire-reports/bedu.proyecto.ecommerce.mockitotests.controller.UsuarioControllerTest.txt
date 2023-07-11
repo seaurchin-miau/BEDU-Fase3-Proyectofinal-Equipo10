@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 7, Skipped: 0, Time elapsed: 0.064 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest
-bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testObtenerCompras  Time elapsed: 0.038 s  <<< ERROR!
+Tests run: 7, Failures: 0, Errors: 7, Skipped: 0, Time elapsed: 0.082 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest
+bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testObtenerCompras  Time elapsed: 0.045 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.service.IUsuarioService.findById(java.lang.Integer)" because "this.usuarioService" is null
 	at bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testObtenerCompras(UsuarioControllerTest.java:108)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -64,7 +64,7 @@ java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.service.I
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testAcceder  Time elapsed: 0.002 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testAcceder  Time elapsed: 0.003 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.service.IUsuarioService.findByEmail(String)" because "this.usuarioService" is null
 	at bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testAcceder(UsuarioControllerTest.java:84)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -126,7 +126,7 @@ java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.service.I
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testLogin  Time elapsed: 0.001 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testLogin  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "Object.getClass()" because "bean" is null
 	at org.springframework.test.web.servlet.setup.StubWebApplicationContext.addBeans(StubWebApplicationContext.java:149)
 	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.registerMvcSingletons(StandaloneMockMvcBuilder.java:402)
@@ -192,7 +192,7 @@ java.lang.NullPointerException: Cannot invoke "Object.getClass()" because "bean"
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testSave  Time elapsed: 0.002 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testSave  Time elapsed: 0.003 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "Object.getClass()" because "bean" is null
 	at org.springframework.test.web.servlet.setup.StubWebApplicationContext.addBeans(StubWebApplicationContext.java:149)
 	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.registerMvcSingletons(StandaloneMockMvcBuilder.java:402)
@@ -258,7 +258,7 @@ java.lang.NullPointerException: Cannot invoke "Object.getClass()" because "bean"
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testCerrarSesion  Time elapsed: 0.002 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testCerrarSesion  Time elapsed: 0.001 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "Object.getClass()" because "bean" is null
 	at org.springframework.test.web.servlet.setup.StubWebApplicationContext.addBeans(StubWebApplicationContext.java:149)
 	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.registerMvcSingletons(StandaloneMockMvcBuilder.java:402)
@@ -324,7 +324,7 @@ java.lang.NullPointerException: Cannot invoke "Object.getClass()" because "bean"
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testCreate  Time elapsed: 0.001 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.controller.UsuarioControllerTest.testCreate  Time elapsed: 0.003 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "Object.getClass()" because "bean" is null
 	at org.springframework.test.web.servlet.setup.StubWebApplicationContext.addBeans(StubWebApplicationContext.java:149)
 	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.registerMvcSingletons(StandaloneMockMvcBuilder.java:402)

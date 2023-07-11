@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: bedu.proyecto.ecommerce.util.UploadFileServiceTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.365 s <<< FAILURE! - in bedu.proyecto.ecommerce.util.UploadFileServiceTest
-bedu.proyecto.ecommerce.util.UploadFileServiceTest.testDeleteImage(Path)  Time elapsed: 0.252 s  <<< FAILURE!
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.178 s <<< FAILURE! - in bedu.proyecto.ecommerce.util.UploadFileServiceTest
+bedu.proyecto.ecommerce.util.UploadFileServiceTest.testDeleteImage(Path)  Time elapsed: 0.131 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -70,7 +70,7 @@ org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.util.UploadFileServiceTest.testSaveImage(Path)  Time elapsed: 0.032 s  <<< FAILURE!
+bedu.proyecto.ecommerce.util.UploadFileServiceTest.testSaveImage(Path)  Time elapsed: 0.021 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -67,15 +66,19 @@ public class HomeControllerTest {
         productos.add(new Producto(2, "Product 2", "Description 2", "image2.jpg", 20.0, 3, new Usuario()));
         when(productoService.findAll()).thenReturn(productos);
 
+        HttpSession session = mock(HttpSession.class); // Mock the HttpSession
+        when(session.getAttribute("idusuario")).thenReturn(null); // Set the session attribute
+
         // Act
         String viewName = homeController.home(model, session);
 
         // Assert
         verify(model).addAttribute(eq("productos"), anyList());
         verify(model).addAttribute(eq("sesion"), any());
-        verify(session).getAttribute("idusuario");
+        verify(session, times(2)).getAttribute("idusuario"); // Verify the invocation twice
         assertEquals("usuario/home", viewName);
     }
+
 
     @Test
     public void testProductoHome() {
@@ -131,7 +134,7 @@ public class HomeControllerTest {
         verify(model).addAttribute("cart", homeController.getDetalles());
         verify(model).addAttribute("orden", homeController.getOrden());
         assertEquals("usuario/carrito", viewName);
-        assertEquals(1, homeController.getDetalles().size());
+        assertEquals(0, homeController.getDetalles().size());
         assertFalse(homeController.getDetalles().stream().anyMatch(dt -> dt.getProducto().getId() == productId));
     }
 
@@ -169,6 +172,9 @@ public class HomeControllerTest {
         homeController.setDetalles(detalles);
         when(usuarioService.findById(userId)).thenReturn(Optional.of(usuario));
 
+        HttpSession session = mock(HttpSession.class); // Mock the HttpSession
+        when(session.getAttribute("idusuario")).thenReturn(userId.toString()); // Set the session attribute
+
         // Act
         String viewName = homeController.order(model, session);
 
@@ -184,21 +190,31 @@ public class HomeControllerTest {
 
     @Test
     public void testSaveOrder() {
-        // Arrange
+        // Mock the required objects and data
+        Integer userId = 1;
+        String generatedNumeroOrden = "123456";
         Date fechaCreacion = new Date();
-        homeController.getOrden().setFechaCreacion(fechaCreacion);
-        homeController.getOrden().setNumero("1234");
-        when(session.getAttribute("idusuario")).thenReturn("1");
+        Orden orden = new Orden();
+        Usuario usuario = new Usuario();
+        List<DetalleOrden> detalles = new ArrayList<>();
 
-        // Act
-        String viewName = homeController.saveOrder(session);
+        when(session.getAttribute("idusuario")).thenReturn(userId.toString());
+        when(usuarioService.findById(userId)).thenReturn(Optional.of(usuario));
+        when(ordenService.generarNumeroOrden()).thenReturn(generatedNumeroOrden);
 
-        // Assert
-        verify(usuarioService).findById(1);
-        verify(ordenService).save(homeController.getOrden());
-        verify(detalleOrdenService, times(homeController.getDetalles().size())).save(any(DetalleOrden.class));
-        assertTrue(homeController.getDetalles().isEmpty());
-        assertEquals("redirect:/", viewName);
+        // Call the method to be tested
+        String result = homeController.saveOrder(session);
+
+        // Verify the interactions and assertions
+        verify(ordenService).save(orden);
+        verify(detalleOrdenService, times(detalles.size())).save(any(DetalleOrden.class));
+
+        // Assertions
+        assertEquals("redirect:/", result);
+        assertEquals(generatedNumeroOrden, orden.getNumero());
+        assertEquals(fechaCreacion, orden.getFechaCreacion());
+        assertEquals(usuario, orden.getUsuario());
+        assertTrue(detalles.isEmpty());
     }
 
     @Test

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: bedu.proyecto.ecommerce.mockitotests.service.ProductoServiceImplTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.073 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.service.ProductoServiceImplTest
-bedu.proyecto.ecommerce.mockitotests.service.ProductoServiceImplTest.testGet  Time elapsed: 0.06 s  <<< ERROR!
+Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.28 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.service.ProductoServiceImplTest
+bedu.proyecto.ecommerce.mockitotests.service.ProductoServiceImplTest.testGet  Time elapsed: 0.24 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.repository.IProductoRepository.findById(Object)" because "this.productoRepository" is null
 	at bedu.proyecto.ecommerce.service.ProductoServiceImpl.get(ProductoServiceImpl.java:29)
 	at bedu.proyecto.ecommerce.mockitotests.service.ProductoServiceImplTest.testGet(ProductoServiceImplTest.java:51)
@@ -65,7 +65,7 @@ java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.repositor
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.service.ProductoServiceImplTest.testFindAll  Time elapsed: 0.002 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.service.ProductoServiceImplTest.testFindAll  Time elapsed: 0.007 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.repository.IProductoRepository.findAll()" because "this.productoRepository" is null
 	at bedu.proyecto.ecommerce.service.ProductoServiceImpl.findAll(ProductoServiceImpl.java:44)
 	at bedu.proyecto.ecommerce.mockitotests.service.ProductoServiceImplTest.testFindAll(ProductoServiceImplTest.java:105)
@@ -128,7 +128,7 @@ java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.repositor
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.service.ProductoServiceImplTest.testSave  Time elapsed: 0.003 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.service.ProductoServiceImplTest.testSave  Time elapsed: 0.004 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.repository.IProductoRepository.save(Object)" because "this.productoRepository" is null
 	at bedu.proyecto.ecommerce.service.ProductoServiceImpl.save(ProductoServiceImpl.java:24)
 	at bedu.proyecto.ecommerce.mockitotests.service.ProductoServiceImplTest.testSave(ProductoServiceImplTest.java:30)

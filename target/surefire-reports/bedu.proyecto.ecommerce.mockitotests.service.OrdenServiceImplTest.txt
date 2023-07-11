@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: bedu.proyecto.ecommerce.mockitotests.service.OrdenServiceImplTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.114 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.service.OrdenServiceImplTest
-bedu.proyecto.ecommerce.mockitotests.service.OrdenServiceImplTest.testFindAll  Time elapsed: 0.097 s  <<< ERROR!
+Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.197 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.service.OrdenServiceImplTest
+bedu.proyecto.ecommerce.mockitotests.service.OrdenServiceImplTest.testFindAll  Time elapsed: 0.176 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.repository.IOrdenRepository.findAll()" because "this.ordenRepository" is null
 	at bedu.proyecto.ecommerce.service.OrdenServiceImpl.findAll(OrdenServiceImpl.java:27)
 	at bedu.proyecto.ecommerce.mockitotests.service.OrdenServiceImplTest.testFindAll(OrdenServiceImplTest.java:60)
@@ -129,7 +129,7 @@ java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.repositor
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.service.OrdenServiceImplTest.testFindByUsuario  Time elapsed: 0.003 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.service.OrdenServiceImplTest.testFindByUsuario  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.repository.IOrdenRepository.findByUsuario(bedu.proyecto.ecommerce.model.Usuario)" because "this.ordenRepository" is null
 	at bedu.proyecto.ecommerce.service.OrdenServiceImpl.findByUsuario(OrdenServiceImpl.java:62)
 	at bedu.proyecto.ecommerce.mockitotests.service.OrdenServiceImplTest.testFindByUsuario(OrdenServiceImplTest.java:107)
@@ -192,7 +192,7 @@ java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.repositor
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.service.OrdenServiceImplTest.testSave  Time elapsed: 0.003 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.service.OrdenServiceImplTest.testSave  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.repository.IOrdenRepository.save(Object)" because "this.ordenRepository" is null
 	at bedu.proyecto.ecommerce.service.OrdenServiceImpl.save(OrdenServiceImpl.java:22)
 	at bedu.proyecto.ecommerce.mockitotests.service.OrdenServiceImplTest.testSave(OrdenServiceImplTest.java:32)

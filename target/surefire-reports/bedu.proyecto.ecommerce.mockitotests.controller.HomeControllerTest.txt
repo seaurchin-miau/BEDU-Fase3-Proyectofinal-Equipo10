@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: bedu.proyecto.ecommerce.mockitotests.controller.HomeControllerTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 1, Errors: 3, Skipped: 0, Time elapsed: 0.128 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.controller.HomeControllerTest
-bedu.proyecto.ecommerce.mockitotests.controller.HomeControllerTest.testDeleteProductoCart  Time elapsed: 0.055 s  <<< ERROR!
+Tests run: 8, Failures: 1, Errors: 3, Skipped: 0, Time elapsed: 0.418 s <<< FAILURE! - in bedu.proyecto.ecommerce.mockitotests.controller.HomeControllerTest
+bedu.proyecto.ecommerce.mockitotests.controller.HomeControllerTest.testDeleteProductoCart  Time elapsed: 0.152 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.model.Producto.getId()" because the return value of "bedu.proyecto.ecommerce.model.DetalleOrden.getProducto()" is null
 	at bedu.proyecto.ecommerce.controller.HomeController.deleteProductoCart(HomeController.java:128)
 	at bedu.proyecto.ecommerce.mockitotests.controller.HomeControllerTest.testDeleteProductoCart(HomeControllerTest.java:126)
@@ -65,7 +65,7 @@ java.lang.NullPointerException: Cannot invoke "bedu.proyecto.ecommerce.model.Pro
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.controller.HomeControllerTest.testOrder  Time elapsed: 0.004 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.controller.HomeControllerTest.testOrder  Time elapsed: 0.005 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "Object.toString()" because the return value of "jakarta.servlet.http.HttpSession.getAttribute(String)" is null
 	at bedu.proyecto.ecommerce.controller.HomeController.order(HomeController.java:160)
 	at bedu.proyecto.ecommerce.mockitotests.controller.HomeControllerTest.testOrder(HomeControllerTest.java:173)
@@ -128,7 +128,7 @@ java.lang.NullPointerException: Cannot invoke "Object.toString()" because the re
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.controller.HomeControllerTest.testHome  Time elapsed: 0.011 s  <<< FAILURE!
+bedu.proyecto.ecommerce.mockitotests.controller.HomeControllerTest.testHome  Time elapsed: 0.045 s  <<< FAILURE!
 org.mockito.exceptions.verification.TooManyActualInvocations: 
 
 session.getAttribute("idusuario");
@@ -199,7 +199,7 @@ But was 2 times:
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
 
-bedu.proyecto.ecommerce.mockitotests.controller.HomeControllerTest.testSaveOrder  Time elapsed: 0.005 s  <<< ERROR!
+bedu.proyecto.ecommerce.mockitotests.controller.HomeControllerTest.testSaveOrder  Time elapsed: 0.014 s  <<< ERROR!
 java.util.NoSuchElementException: No value present
 	at java.base/java.util.Optional.get(Optional.java:143)
 	at bedu.proyecto.ecommerce.controller.HomeController.saveOrder(HomeController.java:177)
