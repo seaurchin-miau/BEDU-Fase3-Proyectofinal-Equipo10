@@ -3,7 +3,7 @@ package bedu.proyecto.ecommerce.controller;
 import java.io.IOException;
 import java.util.Optional;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +22,7 @@ import bedu.proyecto.ecommerce.model.Producto;
 import bedu.proyecto.ecommerce.model.Usuario;
 import bedu.proyecto.ecommerce.service.IUsuarioService;
 import bedu.proyecto.ecommerce.service.ProductoService;
-import bedu.proyecto.ecommerce.service.UploadFileService;
+import bedu.proyecto.ecommerce.util.UploadFileService;
 
 @Slf4j
 @Controller
