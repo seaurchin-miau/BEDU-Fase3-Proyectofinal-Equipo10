@@ -97,7 +97,7 @@ public class UsuarioController {
 
         //session
         model.addAttribute("sesion", session.getAttribute("idusuario"));
-        return "usuario/detallecompra";
+        return "usuario/detalledecompra";
     }
 
     @GetMapping("/cerrar")
