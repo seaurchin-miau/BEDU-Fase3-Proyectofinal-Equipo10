@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import bedu.proyecto.ecommerce.controller.HomeController;
 import org.junit.jupiter.api.BeforeEach;
