@@ -29,7 +29,7 @@ public class DetalleOrden {
 	
 	@ManyToOne
 	private Producto producto;
-	public DetalleOrden(Integer id, String nombre, double cantidad, double precio, double total) {
+	public DetalleOrden(Integer id, String nombre, int cantidad, double precio, double total) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
