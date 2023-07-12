@@ -200,4 +200,13 @@ public class HomeController {
 		return "usuario/home";
 	}
 
+	@GetMapping("/blog")
+	public String blog(Model model) {
+
+		String titulo = "blog";
+		model.addAttribute("titulo	", titulo);
+
+		return "usuario/blog";
+	}
+
 }
