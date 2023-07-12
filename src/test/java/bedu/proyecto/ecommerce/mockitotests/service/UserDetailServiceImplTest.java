@@ -3,6 +3,8 @@ package bedu.proyecto.ecommerce.mockitotests.service;
 import bedu.proyecto.ecommerce.model.Usuario;
 import bedu.proyecto.ecommerce.service.IUsuarioService;
 import bedu.proyecto.ecommerce.service.UserDetailServiceImpl;
+import jakarta.servlet.http.HttpSession;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -12,9 +14,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class UserDetailServiceImplTest {
 
@@ -26,35 +27,46 @@ public class UserDetailServiceImplTest {
 
     @Mock
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Mock
+    private HttpSession session;
+
+    @BeforeEach
+    void setUp() {
+        usuarioService = mock(IUsuarioService.class);
+        bCryptPasswordEncoder = mock(BCryptPasswordEncoder.class);
+        session = mock(HttpSession.class);
+    }
 
     @Test
-    void loadUserByUsername_UserFound_ReturnsUserDetails() {
-        MockitoAnnotations.openMocks(this);
+    void testLoadUserByUsername_UserFound_ReturnsUserDetails() {
+        // Arrange
+        String username = "example@example.com";
+        String password = "password";
+        String encodedPassword = "encodedPassword";
+        String role = "ROLE_USER";
+        long userId = 1L;
 
-        // Create a test user
-        String username = "testuser";
-        String password = "testpassword";
-        String encodedPassword = "encodedpassword";
-        String role = "USER";
         Usuario usuario = new Usuario();
-        usuario.setNombre(username);
+        usuario.setId(7);
+        usuario.setNombre("John Doe");
         usuario.setPassword(password);
         usuario.setTipo(role);
 
-        // Mock the behavior of usuarioService.findByEmail
         when(usuarioService.findByEmail(username)).thenReturn(Optional.of(usuario));
-
-        // Mock the behavior of bCryptPasswordEncoder.encode
         when(bCryptPasswordEncoder.encode(password)).thenReturn(encodedPassword);
 
-        // Call the loadUserByUsername method
+        // Act
         UserDetails userDetails = userDetailService.loadUserByUsername(username);
 
-        // Verify that the userDetails object is correctly created
-        assertNotNull(userDetails);
-        assertEquals(username, userDetails.getUsername());
+        // Assert
+        verify(session).setAttribute("idusuario", userId);
+        verify(usuarioService).findByEmail(username);
+        verify(bCryptPasswordEncoder).encode(password);
+        verifyNoMoreInteractions(session, usuarioService, bCryptPasswordEncoder);
+
+        assertEquals(usuario.getNombre(), userDetails.getUsername());
         assertEquals(encodedPassword, userDetails.getPassword());
-        assertTrue(userDetails.getAuthorities().stream().anyMatch(auth -> auth.getAuthority().equals(role)));
+        assertEquals(role, userDetails.getAuthorities().iterator().next().getAuthority());
     }
 
     @Test

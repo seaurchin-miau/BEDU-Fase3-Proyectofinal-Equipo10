@@ -1,135 +1,104 @@
 package bedu.proyecto.ecommerce.mockitotests.service;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import bedu.proyecto.ecommerce.model.Orden;
 import bedu.proyecto.ecommerce.model.Usuario;
 import bedu.proyecto.ecommerce.repository.IOrdenRepository;
 import bedu.proyecto.ecommerce.service.OrdenServiceImpl;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-public class OrdenServiceImplTest {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
+class OrdenServiceImplTest {
+
+    @Mock
+    private IOrdenRepository ordenRepository;
+
+    @InjectMocks
+    private OrdenServiceImpl ordenService;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
-    public void testSave() {
-        // Arrange
+    void testSave() {
         Orden orden = new Orden();
-        orden.setId(1);
-        orden.setNumero("000001");
-        // ... set otras propiedades
-
-        IOrdenRepository ordenRepository = mock(IOrdenRepository.class);
         when(ordenRepository.save(orden)).thenReturn(orden);
 
-        OrdenServiceImpl ordenService = new OrdenServiceImpl();
+        Orden savedOrden = ordenService.save(orden);
 
-        // Act
-        Orden result = ordenService.save(orden);
-
-        // Assert
-        assertEquals(orden, result);
         verify(ordenRepository, times(1)).save(orden);
+        assertEquals(orden, savedOrden);
     }
 
     @Test
-    public void testFindAll() {
-        // Arrange
-        Orden orden1 = new Orden();
-        orden1.setId(1);
-        // ... set propiedades de la orden1
+    void testFindAll() {
+        List<Orden> ordenes = new ArrayList<>();
+        ordenes.add(new Orden());
+        when(ordenRepository.findAll()).thenReturn(ordenes);
 
-        Orden orden2 = new Orden();
-        orden2.setId(2);
-        // ... set propiedades de la orden2
-
-        List<Orden> expectedOrdenes = new ArrayList<>();
-        expectedOrdenes.add(orden1);
-        expectedOrdenes.add(orden2);
-
-        IOrdenRepository ordenRepository = mock(IOrdenRepository.class);
-        when(ordenRepository.findAll()).thenReturn(expectedOrdenes);
-
-        OrdenServiceImpl ordenService = new OrdenServiceImpl();
-
-        // Act
         List<Orden> result = ordenService.findAll();
 
-        // Assert
-        assertEquals(expectedOrdenes, result);
         verify(ordenRepository, times(1)).findAll();
+        assertEquals(ordenes, result);
     }
 
     @Test
-    public void testGenerarNumeroOrden() {
-        // Arrange
-        OrdenServiceImpl ordenService = new OrdenServiceImpl();
-
-        List<Orden> existingOrdenes = new ArrayList<>();
-        // ... añadir órdenes con diferentes números a órdenes existentes
-
-        // Act
-        String result = ordenService.generarNumeroOrden();
-
-        // Assert
-        // añadir assertions basados en lo que esperamos que haga generarNumeroOrden()
-    }
-
-    @Test
-    public void testFindByUsuario() {
-        // Arrange
-        Usuario usuario = new Usuario();
-        usuario.setId(1);
-        // ... set propiedades del usuario
-
+    void generarNumeroOrden() {
+        // Mock the Orden objects
         Orden orden1 = new Orden();
-        orden1.setId(1);
-        // ... set propiedades  de la orden1
-
+        orden1.setNumero("0000000010");
         Orden orden2 = new Orden();
-        orden2.setId(2);
-        // ... set propiedades de la orden2
+        orden2.setNumero("0000000005");
+        Orden orden3 = new Orden();
+        orden3.setNumero("0000000020");
 
-        List<Orden> expectedOrdenes = new ArrayList<>();
-        expectedOrdenes.add(orden1);
-        expectedOrdenes.add(orden2);
+        // Create a list of Orden objects
+        List<Orden> ordenes = new ArrayList<>(Arrays.asList(orden1, orden2, orden3));
 
-        IOrdenRepository ordenRepository = mock(IOrdenRepository.class);
-        when(ordenRepository.findByUsuario(usuario)).thenReturn(expectedOrdenes);
+        // Mock the behavior of the ordenRepository
+        when(ordenRepository.findAll()).thenReturn(ordenes);
 
-        OrdenServiceImpl ordenService = new OrdenServiceImpl();
+        // Call the method under test
+        String generatedNumber = ordenService.generarNumeroOrden();
 
-        // Act
+        // Verify the result
+        assertEquals("0000000021", generatedNumber);
+    }
+
+    @Test
+    void testFindByUsuario() {
+        Usuario usuario = new Usuario();
+        List<Orden> ordenes = new ArrayList<>();
+        when(ordenRepository.findByUsuario(usuario)).thenReturn(ordenes);
+
         List<Orden> result = ordenService.findByUsuario(usuario);
 
-        // Assert
-        assertEquals(expectedOrdenes, result);
         verify(ordenRepository, times(1)).findByUsuario(usuario);
+        assertEquals(ordenes, result);
     }
 
     @Test
-    public void testFindById() {
-        // Arrange
-        Integer orderId = 1;
-        Orden expectedOrden = new Orden();
-        expectedOrden.setId(orderId);
-        // ... set propiedades para expectedOrden
+    void testFindById() {
+        Integer id = 1;
+        Orden orden = new Orden();
+        when(ordenRepository.findById(id)).thenReturn(Optional.of(orden));
 
-        IOrdenRepository ordenRepository = mock(IOrdenRepository.class);
-        when(ordenRepository.findById(orderId)).thenReturn(Optional.of(expectedOrden));
+        Optional<Orden> result = ordenService.findById(id);
 
-        OrdenServiceImpl ordenService = new OrdenServiceImpl();
-
-        // Act
-        Optional<Orden> result = ordenService.findById(orderId);
-
-        // Assert
-        assertTrue(result.isPresent());
-        assertEquals(expectedOrden, result.get());
-        verify(ordenRepository, times(1)).findById(orderId);
+        verify(ordenRepository, times(1)).findById(id);
+        assertEquals(Optional.of(orden), result);
     }
 }
+
