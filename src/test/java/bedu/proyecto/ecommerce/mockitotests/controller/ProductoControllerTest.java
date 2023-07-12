@@ -1,28 +1,27 @@
 package bedu.proyecto.ecommerce.mockitotests.controller;
 
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.multipart.MultipartFile;
-
 import bedu.proyecto.ecommerce.controller.ProductoController;
 import bedu.proyecto.ecommerce.model.Producto;
 import bedu.proyecto.ecommerce.model.Usuario;
 import bedu.proyecto.ecommerce.service.IUsuarioService;
 import bedu.proyecto.ecommerce.service.ProductoService;
 import bedu.proyecto.ecommerce.util.UploadFileService;
+import jakarta.servlet.http.HttpSession;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ProductoControllerTest {
+class ProductoControllerTest {
 
     @Mock
     private ProductoService productoService;
@@ -31,109 +30,95 @@ public class ProductoControllerTest {
     private IUsuarioService usuarioService;
 
     @Mock
-    private UploadFileService uploadFileService;
+    private UploadFileService upload;
 
     @InjectMocks
     private ProductoController productoController;
 
-    private MockMvc mockMvc;
+    @Mock
+    private Producto producto;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
-    public void testShow() throws Exception {
-        // Arrange
+    void testShow() {
+        Model model = Mockito.mock(Model.class);
         List<Producto> productos = new ArrayList<>();
-        productos.add(new Producto(1, "Product 1", "Description 1", "image1.jpg", 10.0, 5, new Usuario()));
-        productos.add(new Producto(2, "Product 2", "Description 2", "image2.jpg", 20.0, 3, new Usuario()));
-        when(productoService.findAll()).thenReturn(productos);
+        Mockito.when(productoService.findAll()).thenReturn(productos);
 
-        // Act & Assert
-        mockMvc = MockMvcBuilders.standaloneSetup(productoController).build();
-        mockMvc.perform(get("/productos"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("productos/show"))
-                .andExpect(model().attributeExists("productos"));
+        String result = productoController.show(model);
+
+        assertEquals("productos/show", result);
+        Mockito.verify(model).addAttribute("productos", productos);
     }
 
     @Test
-    public void testCreate() throws Exception {
-        // Arrange
-        mockMvc = MockMvcBuilders.standaloneSetup(productoController).build();
+    void testCreate() {
+        String result = productoController.create();
 
-        // Act & Assert
-        mockMvc.perform(get("/productos/create"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("productos/create"));
+        assertEquals("productos/create", result);
     }
 
     @Test
-    public void testSave() throws Exception {
-        // Arrange
-        Producto producto = new Producto();
-        MultipartFile file = mock(MultipartFile.class);
-        when(usuarioService.findById(anyInt())).thenReturn(Optional.of(new Usuario()));
-        when(uploadFileService.saveImage(file)).thenReturn("image.jpg");
+    void testSave() throws IOException {
+        HttpSession session = Mockito.mock(HttpSession.class);
+        MultipartFile file = Mockito.mock(MultipartFile.class);
+        Usuario usuario = Mockito.mock(Usuario.class);
+        Mockito.when(session.getAttribute("idusuario")).thenReturn("1");
+        Mockito.when(usuarioService.findById(1)).thenReturn(Optional.of(usuario));
+        Mockito.when(producto.getId()).thenReturn(null);
+        Mockito.when(upload.saveImage(file)).thenReturn("image.jpg");
 
-        // Act & Assert
-        mockMvc = MockMvcBuilders.standaloneSetup(productoController).build();
-        mockMvc.perform(post("/productos/save")
-                        .flashAttr("producto", producto)
-                        .param("img", "dummy-file"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/productos"));
+        String result = productoController.save(producto, file, session);
 
-        verify(productoService).save(producto);
+        assertEquals("redirect:/productos", result);
+        Mockito.verify(producto).setUsuario(usuario);
+        Mockito.verify(producto).setImagen("image.jpg");
+        Mockito.verify(productoService).save(producto);
     }
 
     @Test
-    public void testEdit() throws Exception {
-        // Arrange
-        Integer productId = 1;
-        Producto producto = new Producto(1, "Product 1", "Description 1", "image1.jpg", 10.0, 5, new Usuario());
-        when(productoService.get(productId)).thenReturn(Optional.of(producto));
+    void testEdit() {
+        Integer id = 1;
+        Model model = Mockito.mock(Model.class);
+        Optional<Producto> optionalProducto = Optional.of(producto);
+        Mockito.when(productoService.get(id)).thenReturn(optionalProducto);
 
-        // Act & Assert
-        mockMvc = MockMvcBuilders.standaloneSetup(productoController).build();
-        mockMvc.perform(get("/productos/edit/{id}", productId))
-                .andExpect(status().isOk())
-                .andExpect(view().name("productos/edit"))
-                .andExpect(model().attributeExists("producto"));
+        String result = productoController.edit(id, model);
+
+        assertEquals("productos/edit", result);
+        Mockito.verify(model).addAttribute("producto", producto);
     }
 
     @Test
-    public void testUpdate() throws Exception {
-        // Arrange
-        Producto existingProducto = new Producto(1, "Product 1", "Description 1", "image1.jpg", 10.0, 5, new Usuario());
-        Producto updatedProducto = new Producto(1, "Updated Product", "Updated Description", "updated-image.jpg", 15.0, 3, new Usuario());
-        MultipartFile file = mock(MultipartFile.class);
-        when(productoService.get(anyInt())).thenReturn(Optional.of(existingProducto));
-        when(uploadFileService.saveImage(file)).thenReturn("updated-image.jpg");
+    void testUpdate() throws IOException {
+        MultipartFile file = Mockito.mock(MultipartFile.class);
+        Producto existingProducto = Mockito.mock(Producto.class);
+        Mockito.when(file.isEmpty()).thenReturn(true);
+        Mockito.when(productoService.get(producto.getId())).thenReturn(Optional.of(existingProducto));
 
-        // Act & Assert
-        mockMvc = MockMvcBuilders.standaloneSetup(productoController).build();
-        mockMvc.perform(post("/productos/update")
-                        .flashAttr("producto", updatedProducto)
-                        .param("img", "dummy-file"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/productos"));
+        String result = productoController.update(producto, file);
 
-        verify(productoService).update(updatedProducto);
-        verify(uploadFileService).deleteImage(existingProducto.getImagen());
+        assertEquals("redirect:/productos", result);
+        Mockito.verify(producto).setImagen(existingProducto.getImagen());
+        Mockito.verify(producto).setUsuario(existingProducto.getUsuario());
+        Mockito.verify(productoService).update(producto);
     }
 
     @Test
-    public void testDelete() throws Exception {
-        // Arrange
-        Integer productId = 1;
-        Producto producto = new Producto(1, "Product 1", "Description 1", "image1.jpg", 10.0, 5, new Usuario());
-        when(productoService.get(productId)).thenReturn(Optional.of(producto));
+    void testDelete() {
+        Integer id = 1;
+        Producto producto = Mockito.mock(Producto.class);
+        Mockito.when(productoService.get(id)).thenReturn(Optional.of(producto));
+        Mockito.when(producto.getImagen()).thenReturn("image.jpg");
 
-        // Act & Assert
-        mockMvc = MockMvcBuilders.standaloneSetup(productoController).build();
-        mockMvc.perform(get("/productos/delete/{id}", productId))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/productos"));
+        String result = productoController.delete(id);
 
-        verify(uploadFileService).deleteImage(producto.getImagen());
-        verify(productoService).delete(productId);
+        assertEquals("redirect:/productos", result);
+        Mockito.verify(upload).deleteImage("image.jpg");
+        Mockito.verify(productoService).delete(id);
     }
 }

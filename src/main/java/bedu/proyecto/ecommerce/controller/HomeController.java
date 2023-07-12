@@ -33,7 +33,7 @@ import bedu.proyecto.ecommerce.service.IUsuarioService;
 @Slf4j
 @Controller
 @RequestMapping("/")
-public class HomeController {
+public class 	HomeController {
 
 	@Autowired
 	private ProductoService productoService;
@@ -120,29 +120,29 @@ public class HomeController {
 	// quitar un producto del carrito
 	@GetMapping("/delete/cart/{id}")
 	public String deleteProductoCart(@PathVariable Integer id, Model model) {
-
-		// lista nueva de prodcutos
-		List<DetalleOrden> ordenesNueva = new ArrayList<DetalleOrden>();
+		// Nueva lista de DetalleOrden
+		List<DetalleOrden> ordenesNueva = new ArrayList<>();
 
 		for (DetalleOrden detalleOrden : detalles) {
-			if (detalleOrden.getProducto().getId() != id) {
+			if (detalleOrden.getProducto() != null && !detalleOrden.getProducto().getId().equals(id)) {
 				ordenesNueva.add(detalleOrden);
 			}
 		}
 
-		// poner la nueva lista con los productos restantes
+		// actualizar los detalles con la nueva lista de productos
 		detalles = ordenesNueva;
 
-		double sumaTotal = 0;
-		sumaTotal = detalles.stream().mapToDouble(dt -> dt.getTotal()).sum();
-
+		// Calcular el nuevo
+		double sumaTotal = detalles.stream().mapToDouble(DetalleOrden::getTotal).sum();
 		orden.setTotal(sumaTotal);
+
 		model.addAttribute("cart", detalles);
 		model.addAttribute("orden", orden);
 
 		return "usuario/carrito";
 	}
-	
+
+
 	@GetMapping("/getCart")
 	public String getCart(Model model, HttpSession session) {
 		
@@ -168,30 +168,34 @@ public class HomeController {
 	
 	// guardar la orden
 	@GetMapping("/saveOrder")
-	public String saveOrder(HttpSession session ) {
+	public String saveOrder(HttpSession session) {
 		Date fechaCreacion = new Date();
 		orden.setFechaCreacion(fechaCreacion);
-		orden.setNumero(ordenService.generarNumeroOrden());
-		
+
 		//usuario
-		Usuario usuario =usuarioService.findById( Integer.parseInt(session.getAttribute("idusuario").toString())  ).get();
-		
+		Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+
 		orden.setUsuario(usuario);
+
+		// Call generarNumeroOrden before saving the orden
+		String generatedNumeroOrden = ordenService.generarNumeroOrden();
+		orden.setNumero(generatedNumeroOrden);
+
 		ordenService.save(orden);
-		
+
 		//guardar detalles
-		for (DetalleOrden dt:detalles) {
+		for (DetalleOrden dt : detalles) {
 			dt.setOrden(orden);
 			detalleOrdenService.save(dt);
 		}
-		
-		///limpiar lista y orden
+
+		//limpiar lista y orden
 		orden = new Orden();
 		detalles.clear();
-		
+
 		return "redirect:/";
 	}
-	
+
 	@PostMapping("/search")
 	public String searchProduct(@RequestParam String nombre, Model model) {
 		log.info("Nombre del producto: {}", nombre);

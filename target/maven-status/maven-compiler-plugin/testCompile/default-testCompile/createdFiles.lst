@@ -1,0 +1,12 @@
+bedu/proyecto/ecommerce/mockitotests/controller/UsuarioControllerTest.class
+bedu/proyecto/ecommerce/util/UploadFileServiceTest.class
+bedu/proyecto/ecommerce/mockitotests/service/UserDetailServiceImplTest.class
+bedu/proyecto/ecommerce/util/SecurityConfigTest.class
+bedu/proyecto/ecommerce/mockitotests/service/ProductoServiceImplTest.class
+bedu/proyecto/ecommerce/mockitotests/service/DetalleOrdenServiceImplTest.class
+bedu/proyecto/ecommerce/mockitotests/controller/AdministradorControllerTest.class
+bedu/proyecto/ecommerce/mockitotests/controller/ProductoControllerTest.class
+bedu/proyecto/ecommerce/mockitotests/service/OrdenServiceImplTest.class
+bedu/proyecto/ecommerce/SpringEcommerceApplicationTests.class
+bedu/proyecto/ecommerce/mockitotests/service/UsuarioServiceImplTest.class
+bedu/proyecto/ecommerce/mockitotests/controller/HomeControllerTest.class
