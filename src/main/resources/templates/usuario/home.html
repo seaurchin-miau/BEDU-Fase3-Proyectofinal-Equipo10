@@ -13,49 +13,72 @@
 
 
     <!-- Bootstrap core CSS -->
-    <link th:href="@{vendor/bootstrap/css/bootstrap.min.css}"  rel="stylesheet">
+    <link th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link th:href="@{css/heroic-features.css}" rel="stylesheet">
+    <link th:href="@{css/products.css}" rel="stylesheet">
 
 </head>
 
 <body>
 
 <!-- Navigation -->
-<div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}">
-</div>
+<div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}"> </div>
 
-<div th:include="usuario/template_usuario.html::header-user" th:unless="${sesion==null}"> </div>
+<div th:include="usuario/template_usuario.html::header-user" th:unless="${sesion==null}"></div>
 
 <!-- Page Content -->
 <div class="container">
 
-    <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
-        <h1 class="display-3">Bienvenido a Spring Ecommerce 2021</h1>
-        <p class="lead">Tu tienda de productos en Línea</p>
-    </header>
-
-    <!-- Page Features -->
-    <div class="row text-center">
-
-        <div class="col-lg-3 col-md-6 mb-4" th:each="producto: ${productos}">
-            <div class="card h-100">
-                <img class="card-img-top"
-                     th:src="@{/images/{img} (img=${producto.imagen})} " alt="">
-                <div class="card-body">
-                    <p class="card-text" th:text="${producto.nombre}"></p>
-                </div>
-                <div class="card-footer">
-                    <a th:href="@{/productohome/{id}  (id=${producto.id})  }" class="btn btn-success">Ver
-                        producto</a>
-                </div>
-            </div>
+    <div class="px-4 my-5 text-center border-bottom">
+        <h1 class="display-4 fw-bold text-body-emphasis">Tienda en linea de BEDU</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Compra tus equipos y sigue programando como nunca antes!</p>
         </div>
 
     </div>
-    <!-- /.row -->
+
+    <!-- https://codepen.io/design007/pen/BaRPZgJ -->
+    <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative">
+        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+            <div class="col hp" th:each="producto: ${productos}">
+                <div class="card h-100 shadow-sm">
+                    <a target="_blank" href="https://amzn.to/3qeS1Fe">
+                        <!--                        <img src="https://m.media-amazon.com/images/I/81gK08T6tYL._AC_SL1500_.jpg" class="card-img-top" alt="product.title" />-->
+                        <img class="card-img-top" th:src="@{/images/{img} (img=${producto.imagen})} " alt="">
+                    </a>
+
+                    <div class="label-top shadow-sm">
+                        <a class="text-white" target="_blank" th:text="${producto.nombre}"></a>
+                    </div>
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                            <span class="float-start badge rounded-pill bg-success" th:text="${producto.precio}" >$</span>
+
+                        </div>
+                        <h5 class="card-title">
+                            <a target="_blank" th:text="${producto.descripcion}"></a>
+                        </h5>
+
+                        <div class="d-grid gap-2 my-4">
+
+                            <a th:href="@{/productohome/{id}  (id=${producto.id})  }" class="btn btn-warning bold-btn">ver producto</a>
+
+                        </div>
+                        <div class="clearfix mb-1">
+
+                            <span class="float-start"><a href="#"><i class="fas fa-question-circle"></i></a></span>
+
+                            <span class="float-end">
+              <i class="far fa-heart" style="cursor: pointer"></i>
+
+            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <!-- /.container -->
