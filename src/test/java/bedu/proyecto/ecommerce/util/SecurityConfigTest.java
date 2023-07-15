@@ -2,6 +2,7 @@ package bedu.proyecto.ecommerce.util;
 
 import bedu.proyecto.ecommerce.service.UserDetailServiceImpl;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -16,5 +17,6 @@ public class SecurityConfigTest {
         BCryptPasswordEncoder encoder = securityConfig.passwordEncoder();
         assertNotNull(encoder);
     }
+
 
 }

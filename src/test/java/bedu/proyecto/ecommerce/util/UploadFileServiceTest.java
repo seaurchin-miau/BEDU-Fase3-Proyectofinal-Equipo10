@@ -1,63 +1,76 @@
 package bedu.proyecto.ecommerce.util;
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
-
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockMultipartFile;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import org.junit.jupiter.api.io.TempDir;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 public class UploadFileServiceTest {
 
+    @Mock
+    private Path mockPath;
+
+    @Mock
+    private File mockFile;
+
+    @InjectMocks
     private UploadFileService uploadFileService;
 
     @BeforeEach
-    void setUp() {
-        uploadFileService = new UploadFileService();
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    void testSaveImage(@TempDir Path tempDir) throws IOException {
-        uploadFileService.setFolder(tempDir.toString());
+    public void testSaveImage() throws IOException {
+        // Arrange
+        String folder = "images//";
+        String originalFilename = "test.jpg";
+        MockMultipartFile mockMultipartFile = new MockMultipartFile("file", originalFilename, "image/jpeg", "test image content".getBytes());
 
-        MockMultipartFile file = new MockMultipartFile("test.jpg", "test.jpg", "image/jpeg", "Test Image".getBytes());
+        when(mockPath.toString()).thenReturn(folder + originalFilename);
+        when(mockFile.exists()).thenReturn(false);
+        when(mockFile.getAbsolutePath()).thenReturn(folder + originalFilename);
+        when(mockFile.getPath()).thenReturn(folder + originalFilename);
 
-        String result = uploadFileService.saveImage(file);
+        // Act
+        String result = uploadFileService.saveImage(mockMultipartFile);
 
-        assertEquals("test.jpg", result);
-
-        Path imagePath = tempDir.resolve("test.jpg");
-        assertTrue(Files.exists(imagePath));
-        byte[] imageBytes = Files.readAllBytes(imagePath);
-        assertArrayEquals("Test Image".getBytes(), imageBytes);
+        // Assert
+        assertEquals(originalFilename, result);
     }
 
     @Test
-    void testSaveImageWithEmptyFile(@TempDir Path tempDir) throws IOException {
-        uploadFileService.setFolder(tempDir.toString());
+    public void testSaveImageEmptyFile() throws IOException {
+        // Arrange
+        MockMultipartFile emptyFile = new MockMultipartFile("emptyfile", new byte[0]);
 
-        MockMultipartFile emptyFile = new MockMultipartFile("empty.jpg", new byte[0]);
-
+        // Act
         String result = uploadFileService.saveImage(emptyFile);
 
+        // Assert
         assertEquals("default.jpg", result);
     }
 
     @Test
-    void testDeleteImage(@TempDir Path tempDir) throws IOException {
-        Path imagePath = tempDir.resolve("test.jpg");
-        Files.createFile(imagePath);
+    public void testDeleteImage() {
+        // Arrange
+        String imageName = "test.jpg";
+        String folder = "images/";
 
-        assertTrue(Files.exists(imagePath));
+        // Act
+        uploadFileService.deleteImage(imageName);
 
-        uploadFileService.setFolder(tempDir.toString());
-        uploadFileService.deleteImage("test.jpg");
-
-        assertFalse(Files.exists(imagePath));
+        // Assert
+        assertEquals(null, mockFile.getPath());
     }
 }

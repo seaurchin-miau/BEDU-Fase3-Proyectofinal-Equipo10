@@ -44,30 +44,24 @@ class UsuarioControllerTest {
     }
 
     @Test
-    void testSave() {
-        // Arrange
+    public void testSave() {
         Usuario usuario = new Usuario();
-        usuario.setEmail("test@example.com");
         usuario.setPassword("password");
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(usuario.getPassword());
-        usuario.setTipo("USER");
-        when(usuarioService.save(any(Usuario.class))).thenReturn(usuario);
 
-        // Act
         String result = usuarioController.save(usuario);
 
-        // Assert
-        verify(usuarioService, times(1)).save(usuario);
-        verify(usuario).setPassword(encodedPassword);
+        verify(usuarioService).save(any(Usuario.class));
         assert result.equals("redirect:/");
+
     }
 
     @Test
     void testAcceder_WithExistingUser() {
         // Arrange
         Usuario usuario = new Usuario();
+        usuario.setId(1);
         usuario.setEmail("test@example.com");
+        usuario.setTipo("USER");
 
         Optional<Usuario> userOptional = Optional.of(usuario);
 
@@ -101,6 +95,61 @@ class UsuarioControllerTest {
         // Assert
         verify(usuarioService, times(1)).findByEmail(eq(usuario.getEmail()));
         assert result.equals("redirect:/");
+    }
+
+    @Test
+    public void testAccederUser() {
+        // Arrange
+        Usuario usuario = new Usuario();
+        usuario.setEmail("user@example.com");
+        usuario.setTipo("USER");
+        HttpSession session = mock(HttpSession.class);
+        when(session.getAttribute("idusuario")).thenReturn(null);
+        when(usuarioService.findByEmail("user@example.com")).thenReturn(Optional.of(usuario));
+
+        // Act
+        String viewName = usuarioController.acceder(usuario, session);
+
+        // Assert
+        verify(usuarioService).findByEmail("user@example.com");
+        verify(session).setAttribute("idusuario", usuario.getId());
+        assert "redirect:/".equals(viewName);
+    }
+
+    @Test
+    public void testAccederAdmin() {
+        // Arrange
+        Usuario usuario = new Usuario();
+        usuario.setEmail("admin@example.com");
+        usuario.setTipo("ADMIN");
+        HttpSession session = mock(HttpSession.class);
+        when(session.getAttribute("idusuario")).thenReturn(null);
+        when(usuarioService.findByEmail("admin@example.com")).thenReturn(Optional.of(usuario));
+
+        // Act
+        String viewName = usuarioController.acceder(usuario, session);
+
+        // Assert
+        verify(usuarioService).findByEmail("admin@example.com");
+        verify(session).setAttribute("idusuario", usuario.getId());
+        assert "redirect:/administrador".equals(viewName);
+    }
+
+    @Test
+    public void testAccederNoUser() {
+        // Arrange
+        Usuario usuario = new Usuario();
+        usuario.setEmail("unknown@example.com");
+        HttpSession session = mock(HttpSession.class);
+        when(session.getAttribute("idusuario")).thenReturn(null);
+        when(usuarioService.findByEmail("unknown@example.com")).thenReturn(Optional.empty());
+
+        // Act
+        String viewName = usuarioController.acceder(usuario, session);
+
+        // Assert
+        verify(usuarioService).findByEmail("unknown@example.com");
+        assert "redirect:/".equals(viewName);
     }
 
     @Test

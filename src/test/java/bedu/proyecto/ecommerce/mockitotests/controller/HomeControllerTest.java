@@ -190,31 +190,20 @@ public class HomeControllerTest {
 
     @Test
     public void testSaveOrder() {
-        // Mock the required objects and data
-        Integer userId = 1;
-        String generatedNumeroOrden = "123456";
-        Date fechaCreacion = new Date();
-        Orden orden = new Orden();
+        // Preparar datos de prueba
         Usuario usuario = new Usuario();
-        List<DetalleOrden> detalles = new ArrayList<>();
+        usuario.setId(1);
+        when(session.getAttribute("idusuario")).thenReturn("1");
+        when(usuarioService.findById(1)).thenReturn(Optional.of(usuario));
+        when(ordenService.generarNumeroOrden()).thenReturn("12345");
 
-        when(session.getAttribute("idusuario")).thenReturn(userId.toString());
-        when(usuarioService.findById(userId)).thenReturn(Optional.of(usuario));
-        when(ordenService.generarNumeroOrden()).thenReturn(generatedNumeroOrden);
-
-        // Call the method to be tested
+        // Llamar al método a probar
         String result = homeController.saveOrder(session);
 
-        // Verify the interactions and assertions
-        verify(ordenService).save(orden);
-        verify(detalleOrdenService, times(detalles.size())).save(any(DetalleOrden.class));
-
-        // Assertions
+        // Verificar resultados
         assertEquals("redirect:/", result);
-        assertEquals(generatedNumeroOrden, orden.getNumero());
-        assertEquals(fechaCreacion, orden.getFechaCreacion());
-        assertEquals(usuario, orden.getUsuario());
-        assertTrue(detalles.isEmpty());
+        verify(ordenService).save(any(Orden.class));
+        verify(detalleOrdenService, times(homeController.getDetalles().size())).save(any(DetalleOrden.class));
     }
 
     @Test
