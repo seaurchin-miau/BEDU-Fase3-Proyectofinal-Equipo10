@@ -23,13 +23,16 @@
 <body>
 
 <!-- Navigation -->
-<div th:include="usuario/template_usuario.html::header"></div>
+<div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}">
+</div>
+
+<div th:include="usuario/template_usuario.html::header-user" th:unless="${sesion==null}"> </div>
 
 <!-- Page Content -->
 <div class="container">
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Resumen de la orden</small>
+        <small>Resumen de la orden</small>
     </h1>
 
     <ol class="breadcrumb">
@@ -84,7 +87,7 @@
 
                     <ul class="list-group">
                         <li class="list-group-item"><h5 th:text=" 'Total: '+ ${orden.total} "> </h5></li>
-                        <a th:href="@{saveOrder}" class="btn btn-dark">Generar</a>
+                        <a th:href="@{saveOrder}" class="btn btn-warning">Generar</a>
                     </ul>
                 </div>
             </div>

@@ -82,4 +82,6 @@ public class UserDetailServiceImplTest {
         // Call the loadUserByUsername method and expect an exception
         assertThrows(UsernameNotFoundException.class, () -> userDetailService.loadUserByUsername(username));
     }
+
+
 }

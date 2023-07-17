@@ -88,7 +88,7 @@ public class HomeControllerTest {
         when(productoService.get(productId)).thenReturn(Optional.of(producto));
 
         // Act
-        String viewName = homeController.productoHome(productId, model);
+        String viewName = homeController.productoHome(productId, model, session);
 
         // Assert
         verify(model).addAttribute(eq("producto"), any(Producto.class));
@@ -104,7 +104,7 @@ public class HomeControllerTest {
         when(productoService.get(productId)).thenReturn(Optional.of(producto));
 
         // Act
-        String viewName = homeController.addCart(productId, quantity, model);
+        String viewName = homeController.addCart(productId, quantity, model,session);
 
         // Assert
         verify(model).addAttribute(eq("cart"), anyList());

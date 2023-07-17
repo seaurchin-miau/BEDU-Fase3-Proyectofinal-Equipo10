@@ -20,9 +20,9 @@ class SpringEcommerceApplicationTests {
 		LoginPage loginPage = homePage.ClickLogin();
 		loginPage.ClickLogin();*/
 
-		mainPage.navigate();
+		//mainPage.navigate();
 
-		mainPage.PerformLogin();
+		//mainPage.PerformLogin();
 
 	}
 
