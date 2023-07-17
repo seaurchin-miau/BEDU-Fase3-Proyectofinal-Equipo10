@@ -105,4 +105,9 @@ public class UsuarioController {
         session.removeAttribute("idusuario");
         return "redirect:/";
     }
+
+/*    @GetMapping("/{id}")
+    public Optional<Usuario> getUsuario(@PathVariable int id) {
+        return usuarioService.findById(id);
+    }*/
 }
