@@ -17,7 +17,7 @@ jobs:
           distribution: "zulu"
 
       - name: ejecutar pruebas
-        run: ./gradlew test --no-daemon
+        run: ./mvnw clean test --no-daemon
 
 #Ejecutar pipeline en cada push sobre la rama "main"
 on:
