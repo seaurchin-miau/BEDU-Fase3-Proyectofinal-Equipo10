@@ -1,0 +1,27 @@
+#Nombre pipeline
+name: Integracion Continua
+
+#Pasos del pípeline
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: clonar repo
+        uses: actions/checkout@v2
+
+      - name: configurar JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: "17"
+          distribution: "zulu"
+
+      - name: ejecutar pruebas
+        run: ./gradlew test --no-daemon
+
+#Ejecutar pipeline en cada push sobre la rama "main"
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
