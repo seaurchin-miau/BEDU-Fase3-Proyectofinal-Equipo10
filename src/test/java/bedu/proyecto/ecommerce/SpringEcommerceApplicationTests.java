@@ -10,11 +10,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SpringEcommerceApplicationTests {
 
-	@Autowired
+	/*	@Autowired
 	private MainPage mainPage;
 	@Test
 	void contextLoads() {
-/*		System.out.println("holaaaa");
+	System.out.println("holaaaa");
 		HomePage homePage = new HomePage();
 		//LoginPage loginPage = new LoginPage();
 		LoginPage loginPage = homePage.ClickLogin();
@@ -22,8 +22,7 @@ class SpringEcommerceApplicationTests {
 
 		//mainPage.navigate();
 
-		//mainPage.PerformLogin();
+		//mainPage.PerformLogin();}
 
-	}
 
 }
