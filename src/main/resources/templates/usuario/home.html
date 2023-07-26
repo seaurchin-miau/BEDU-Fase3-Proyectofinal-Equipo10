@@ -43,10 +43,11 @@
         <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
             <div class="col hp" th:each="producto: ${productos}">
                 <div class="card h-100 shadow-sm">
-                    <a target="_blank" href="https://amzn.to/3qeS1Fe">
-                        <!--                        <img src="https://m.media-amazon.com/images/I/81gK08T6tYL._AC_SL1500_.jpg" class="card-img-top" alt="product.title" />-->
+
+                         <!--<img src="https://m.media-amazon.com/images/I/81gK08T6tYL._AC_SL1500_.jpg" class="card-img-top" alt="product.title" />-->
                         <img class="card-img-top" th:src="@{/images/{img} (img=${producto.imagen})} " alt="">
-                    </a>
+
+
 
                     <div class="label-top shadow-sm">
                         <a class="text-white" target="_blank" th:text="${producto.nombre}"></a>

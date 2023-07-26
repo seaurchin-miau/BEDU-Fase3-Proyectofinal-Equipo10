@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
+<body>
 <!-- Navigation -->
 <div th:fragment="header">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
 			<a class="navbar-brand" th:href="@{/administrador}">Spring eCommerce</a>
 
-			<form class="form-inline my-2 my-lg-0" method="post" action="#">
-				<input class="form-control mr-sm-2" type="search"
-					   placeholder="Buscar" aria-label="Search" name="nombre"
-					   autocomplete="off">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+			<form class="d-flex my-2 my-lg-0" method="post" action="#">
+				<div>
+					<input class="form-control mr-sm-2" type="search" placeholder="Buscar"
+						   aria-label="Search" name="nombre" autocomplete="off">
+				</div>
+				<button style="margin-left: 1em" class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
 			</form>
 
 
@@ -40,7 +42,6 @@
 
 </div>
 
-
 <!-- Footer -->
 <div th:fragment="footer">
 	<footer class="py-5 bg-dark">
@@ -52,5 +53,7 @@
 	</footer>
 
 </div>
+
+</body>
 
 </html>
