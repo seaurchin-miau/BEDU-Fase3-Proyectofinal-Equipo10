@@ -5,6 +5,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 
 public class OrderPage {
+    /*
     private WebDriver driver;
 
     // Constructor to receive the WebDriver instance from the test class
@@ -32,4 +33,6 @@ public class OrderPage {
         driver.findElement(By.linkText("Ver Orden")).click();
         driver.findElement(By.linkText("Generar")).click();
     }
+
+     */
 }

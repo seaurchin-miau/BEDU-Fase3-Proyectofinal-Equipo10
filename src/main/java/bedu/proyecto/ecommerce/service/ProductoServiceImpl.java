@@ -30,6 +30,11 @@ public class ProductoServiceImpl implements ProductoService{
 	}
 
 	@Override
+	public Optional<List<Producto>> findByCategoria(String categoria){
+		return productoRepository.findByCategoria(categoria.toLowerCase());
+	}
+
+	@Override
 	public void update(Producto producto) {
 		productoRepository.save(producto);		
 	}

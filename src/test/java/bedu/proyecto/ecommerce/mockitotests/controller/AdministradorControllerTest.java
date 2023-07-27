@@ -51,8 +51,8 @@ public class AdministradorControllerTest {
     @Test
     public void testHome() throws Exception {
         List<Producto> productos = new ArrayList<>();
-        productos.add(new Producto(1, "Product 1", "Description 1", "image1.jpg", 10.0, 5, new Usuario()));
-        productos.add(new Producto(2, "Product 2", "Description 2", "image2.jpg", 20.0, 3, new Usuario()));
+        productos.add(new Producto(1, "Product 1", "Description 1", "Categoria 1", "image1.jpg", 10.0, 5, new Usuario()));
+        productos.add(new Producto(2, "Product 2", "Description 2", "Categoria 1", "image2.jpg", 20.0, 3, new Usuario()));
 
         when(productoService.findAll()).thenReturn(productos);
 

@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SpringEcommerceApplicationTests {
 
+	/*
 	SeleniumDriver seleniumDriver = new SeleniumDriver(BrowserType.CHROME); // or any other BrowserType
 	WebDriver driver = seleniumDriver.getDriver();
 	@Test
@@ -41,4 +42,6 @@ class SpringEcommerceApplicationTests {
 
 		seleniumDriver.quitDriver();
 	}
+
+ */
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 
 public class OrdenesCompraPage {
+    /*
     private WebDriver driver;
 
     // Constructor to receive the WebDriver instance from the test class
@@ -28,4 +29,6 @@ public class OrdenesCompraPage {
         driver.findElement(By.cssSelector("tr:nth-child(2) .btn")).click();
         driver.findElement(By.linkText("Compras")).click();
     }
+
+     */
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage{
+    /*
     private WebDriver driver;
 
     // Constructor to receive the WebDriver instance from the test class
@@ -22,4 +23,6 @@ public class LoginPage{
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.cssSelector(".btn")).click();
     }
+
+     */
 }
