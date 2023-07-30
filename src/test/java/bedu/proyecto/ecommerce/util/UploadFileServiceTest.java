@@ -31,7 +31,7 @@ public class UploadFileServiceTest {
     }
 
     @Test
-    public void testSaveImage() throws IOException {
+    void testSaveImage() throws IOException {
         // Arrange
         String folder = "images//";
         String originalFilename = "test.jpg";
@@ -50,7 +50,7 @@ public class UploadFileServiceTest {
     }
 
     @Test
-    public void testSaveImageEmptyFile() throws IOException {
+    void testSaveImageEmptyFile() throws IOException {
         // Arrange
         MockMultipartFile emptyFile = new MockMultipartFile("emptyfile", new byte[0]);
 
@@ -62,7 +62,7 @@ public class UploadFileServiceTest {
     }
 
     @Test
-    public void testDeleteImage() {
+    void testDeleteImage() {
         // Arrange
         String imageName = "test.jpg";
         String folder = "images/";

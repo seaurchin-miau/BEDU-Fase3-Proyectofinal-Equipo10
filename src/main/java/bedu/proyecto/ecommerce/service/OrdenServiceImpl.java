@@ -45,13 +45,13 @@ public class OrdenServiceImpl implements IOrdenService {
 		}
 		
 		if (numero<10) { //0000001000
-			numeroConcatenado="000000000"+String.valueOf(numero);
+			numeroConcatenado="000000000"+ numero;
 		}else if(numero<100) {
-			numeroConcatenado="00000000"+String.valueOf(numero);
+			numeroConcatenado="00000000"+ numero;
 		}else if(numero<1000) {
-			numeroConcatenado="0000000"+String.valueOf(numero);
+			numeroConcatenado="0000000"+ numero;
 		}else if(numero<10000) {
-			numeroConcatenado="0000000"+String.valueOf(numero);
+			numeroConcatenado="0000000"+ numero;
 		}		
 		
 		return numeroConcatenado;
