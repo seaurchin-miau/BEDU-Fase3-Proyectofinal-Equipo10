@@ -66,15 +66,15 @@ class UsuarioControllerTest {
         Optional<Usuario> userOptional = Optional.of(usuario);
 
         // Mocking behavior
-        when(usuarioService.findByEmail(eq(usuario.getEmail()))).thenReturn(userOptional);
+        when(usuarioService.findByEmail(usuario.getEmail())).thenReturn(userOptional);
         when(session.getAttribute("idusuario")).thenReturn(1);
 
         // Act
         String result = usuarioController.acceder(usuario, session);
 
         // Assert
-        verify(usuarioService, times(1)).findByEmail(eq(usuario.getEmail()));
-        verify(session, times(1)).setAttribute(eq("idusuario"), eq(1));
+        verify(usuarioService, times(1)).findByEmail(usuario.getEmail());
+        verify(session, times(1)).setAttribute("idusuario", 1);
         assert result.equals("redirect:/");
     }
 
@@ -87,13 +87,13 @@ class UsuarioControllerTest {
         Optional<Usuario> userOptional = Optional.empty();
 
         // Mocking behavior
-        when(usuarioService.findByEmail(eq(usuario.getEmail()))).thenReturn(userOptional);
+        when(usuarioService.findByEmail(usuario.getEmail())).thenReturn(userOptional);
 
         // Act
         String result = usuarioController.acceder(usuario, session);
 
         // Assert
-        verify(usuarioService, times(1)).findByEmail(eq(usuario.getEmail()));
+        verify(usuarioService, times(1)).findByEmail(usuario.getEmail());
         assert result.equals("redirect:/");
     }
 
@@ -174,7 +174,7 @@ class UsuarioControllerTest {
         verify(session, times(2)).getAttribute("idusuario"); // Update the expected invocation count to 2
         verify(usuarioService, times(1)).findById(userId);
         verify(ordenService, times(1)).findByUsuario(usuario);
-        verify(model, times(1)).addAttribute(eq("ordenes"), eq(ordenes));
+        verify(model, times(1)).addAttribute("ordenes",ordenes);
         assert result.equals("usuario/compras");
     }
 
@@ -193,7 +193,7 @@ class UsuarioControllerTest {
 
         // Assert
         verify(ordenService, times(1)).findById(orderId);
-        verify(model, times(1)).addAttribute(eq("detalles"), eq(orden.getDetalle()));
+        verify(model, times(1)).addAttribute("detalles", orden.getDetalle());
         verify(session, times(1)).getAttribute("idusuario");
         assert result.equals("usuario/detalledecompra");
     }
