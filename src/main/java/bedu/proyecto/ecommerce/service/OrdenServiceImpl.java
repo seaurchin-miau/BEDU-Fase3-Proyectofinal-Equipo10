@@ -33,7 +33,7 @@ public class OrdenServiceImpl implements IOrdenService {
 		
 		List<Orden> ordenes = findAll();
 		
-		List<Integer> numeros= new ArrayList<Integer>();
+		List<Integer> numeros= new ArrayList<>();
 		
 		ordenes.stream().forEach(o -> numeros.add( Integer.parseInt( o.getNumero())));
 		

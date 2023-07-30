@@ -15,6 +15,7 @@ import bedu.proyecto.ecommerce.model.Usuario;
 import bedu.proyecto.ecommerce.service.IOrdenService;
 import bedu.proyecto.ecommerce.service.ProductoService;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -51,12 +52,12 @@ public class 	HomeController {
 	// para almacenar los detalles de la orden
 	@Getter
 	@Setter
-	List<DetalleOrden> detalles = new ArrayList<DetalleOrden>();
+	List<DetalleOrden> detalles = new ArrayList<>();
 
 	// datos de la orden
 	@Getter
 	@Setter
-    Orden orden = new Orden();
+	Orden orden = new Orden();
 
 	@GetMapping("")
 	public String home(Model model, HttpSession session) {
@@ -202,7 +203,9 @@ public class 	HomeController {
 	@PostMapping("/search")
 	public String searchProduct(@RequestParam String nombre, Model model) {
 		log.info("Nombre del producto: {}", nombre);
-		List<Producto> productos= productoService.findAll().stream().filter( p -> p.getNombre().contains(nombre)).collect(Collectors.toList());
+		List<Producto> productos = productoService.findAll().stream()
+				.filter(p -> p.getNombre().contains(nombre))
+				.toList();
 		model.addAttribute("productos", productos);		
 		return "usuario/home";
 	}
@@ -211,7 +214,7 @@ public class 	HomeController {
 	public String blog(Model model) {
 
 		String titulo = "blog";
-		model.addAttribute("titulo	", titulo);
+		model.addAttribute("titulo", titulo);
 
 		return "usuario/blog";
 	}
