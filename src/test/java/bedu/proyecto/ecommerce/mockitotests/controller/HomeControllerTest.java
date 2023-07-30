@@ -96,7 +96,7 @@ public class HomeControllerTest {
     }
 
     @Test
-    public void testAddCart() {
+    void testAddCart() {
         // Arrange
         Integer productId = 1;
         Integer quantity = 2;
@@ -115,7 +115,7 @@ public class HomeControllerTest {
     }
 
     @Test
-    public void testDeleteProductoCart() {
+    void testDeleteProductoCart() {
         // Arrange
         Integer productId = 1;
         DetalleOrden detalleOrden1 = new DetalleOrden(1, "Product 1", 5, 10.0, 50.0);
@@ -139,7 +139,7 @@ public class HomeControllerTest {
     }
 
     @Test
-    public void testGetCart() {
+    void testGetCart() {
         // Arrange
         List<DetalleOrden> detalles = new ArrayList<>();
         homeController.setDetalles(detalles);
@@ -158,7 +158,7 @@ public class HomeControllerTest {
     }
 
     @Test
-    public void testOrder() {
+    void testOrder() {
         // Arrange
         Integer userId = 1;
         Integer orderId = 1;
@@ -189,7 +189,7 @@ public class HomeControllerTest {
     }
 
     @Test
-    public void testSaveOrder() {
+    void testSaveOrder() {
         // Preparar datos de prueba
         Usuario usuario = new Usuario();
         usuario.setId(1);
@@ -207,7 +207,7 @@ public class HomeControllerTest {
     }
 
     @Test
-    public void testSearchProduct() {
+    void testSearchProduct() {
         // Arrange
         String productName = "Product";
         List<Producto> productos = new ArrayList<>();

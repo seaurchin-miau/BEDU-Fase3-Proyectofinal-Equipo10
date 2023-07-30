@@ -47,7 +47,7 @@ public class UsuarioServiceImplTest {
     }
 
     @Test
-    public void save_ValidUsuario_ReturnsSavedUsuario() {
+    void save_ValidUsuario_ReturnsSavedUsuario() {
         // Arrange
         Usuario usuario = new Usuario();
         usuario.setId(1);
@@ -62,7 +62,7 @@ public class UsuarioServiceImplTest {
     }
 
     @Test
-    public void findByEmail_ValidEmail_ReturnsUsuario() {
+    void findByEmail_ValidEmail_ReturnsUsuario() {
         // Arrange
         String email = "test@ejemplo.com";
         Usuario usuario = new Usuario();
@@ -79,7 +79,7 @@ public class UsuarioServiceImplTest {
     }
 
     @Test
-    public void findAll_ReturnsListOfUsuarios() {
+    void findAll_ReturnsListOfUsuarios() {
         // Arrange
         Usuario usuario1 = new Usuario();
         usuario1.setId(1);

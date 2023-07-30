@@ -26,7 +26,7 @@ public class DetalleOrdenServiceImplTest {
     }
 
     @Test
-    public void testSave() {
+    void testSave() {
         // Create a DetalleOrden object for testing
         DetalleOrden detalleOrden = new DetalleOrden();
         detalleOrden.setId(1);

@@ -44,7 +44,7 @@ class UsuarioControllerTest {
     }
 
     @Test
-    public void testSave() {
+    void testSave() {
         Usuario usuario = new Usuario();
         usuario.setPassword("password");
 
@@ -98,7 +98,7 @@ class UsuarioControllerTest {
     }
 
     @Test
-    public void testAccederUser() {
+    void testAccederUser() {
         // Arrange
         Usuario usuario = new Usuario();
         usuario.setEmail("user@example.com");
@@ -117,7 +117,7 @@ class UsuarioControllerTest {
     }
 
     @Test
-    public void testAccederAdmin() {
+    void testAccederAdmin() {
         // Arrange
         Usuario usuario = new Usuario();
         usuario.setEmail("admin@example.com");
@@ -136,7 +136,7 @@ class UsuarioControllerTest {
     }
 
     @Test
-    public void testAccederNoUser() {
+    void testAccederNoUser() {
         // Arrange
         Usuario usuario = new Usuario();
         usuario.setEmail("unknown@example.com");

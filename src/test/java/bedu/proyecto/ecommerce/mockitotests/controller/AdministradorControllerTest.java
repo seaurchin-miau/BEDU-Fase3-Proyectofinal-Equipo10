@@ -49,7 +49,7 @@ public class AdministradorControllerTest {
     }
 
     @Test
-    public void testHome() throws Exception {
+    void testHome() throws Exception {
         List<Producto> productos = new ArrayList<>();
         productos.add(new Producto(1, "Product 1", "Description 1", "Categoria 1", "image1.jpg", 10.0, 5, new Usuario()));
         productos.add(new Producto(2, "Product 2", "Description 2", "Categoria 1", "image2.jpg", 20.0, 3, new Usuario()));
@@ -65,7 +65,7 @@ public class AdministradorControllerTest {
     }
 
     @Test
-    public void testUsuarios() throws Exception {
+    void testUsuarios() throws Exception {
         mockMvc.perform(get("/administrador/usuarios"))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("usuarios"))
@@ -75,7 +75,7 @@ public class AdministradorControllerTest {
     }
 
     @Test
-    public void testOrdenes() throws Exception {
+    void testOrdenes() throws Exception {
         mockMvc.perform(get("/administrador/ordenes"))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("ordenes"))
@@ -85,7 +85,7 @@ public class AdministradorControllerTest {
     }
 
     @Test
-    public void testDetalle() throws Exception {
+    void testDetalle() throws Exception {
         int orderId = 1;
         Orden orden = new Orden();
         orden.setId(orderId);
