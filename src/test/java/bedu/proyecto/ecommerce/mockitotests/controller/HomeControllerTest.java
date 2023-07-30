@@ -59,7 +59,7 @@ public class HomeControllerTest {
     }
 
     @Test
-    public void testHome() {
+     void testHome() {
         // Arrange
         List<Producto> productos = new ArrayList<>();
         productos.add(new Producto(1, "Product 1", "Description 1", "Categoria 1", "image1.jpg", 10.0, 5, new Usuario()));
@@ -81,7 +81,7 @@ public class HomeControllerTest {
 
 
     @Test
-    public void testProductoHome() {
+    void testProductoHome() {
         // Arrange
         Integer productId = 1;
         Producto producto = new Producto(1, "Product 1", "Description 1", "Categoria 1", "image1.jpg", 10.0, 5, new Usuario());

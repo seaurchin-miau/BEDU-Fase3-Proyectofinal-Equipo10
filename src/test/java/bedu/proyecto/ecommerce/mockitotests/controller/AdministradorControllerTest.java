@@ -27,7 +27,7 @@ import bedu.proyecto.ecommerce.service.IOrdenService;
 import bedu.proyecto.ecommerce.service.IUsuarioService;
 import bedu.proyecto.ecommerce.service.ProductoService;
 
-public class AdministradorControllerTest {
+ class AdministradorControllerTest {
 
     @Mock
     private ProductoService productoService;

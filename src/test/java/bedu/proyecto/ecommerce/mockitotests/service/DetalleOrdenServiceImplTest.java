@@ -11,8 +11,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class DetalleOrdenServiceImplTest {
+ class DetalleOrdenServiceImplTest {
 
     @Mock
     private IDetalleOrdenRepository detalleOrdenRepository;

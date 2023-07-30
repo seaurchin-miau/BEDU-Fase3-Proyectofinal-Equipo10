@@ -13,8 +13,7 @@ import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-
-public class UploadFileServiceTest {
+ class UploadFileServiceTest {
 
     @Mock
     private Path mockPath;
