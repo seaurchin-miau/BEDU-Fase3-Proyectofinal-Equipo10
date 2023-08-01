@@ -26,28 +26,14 @@ public class    SecurityConfig extends WebSecurityConfigurerAdapter {
         return provider;
     }
 
-    @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-                .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasRole("USER")
-                .anyRequest().permitAll()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/login/access")
-                .and()
-                .logout()
-                .logoutSuccessUrl("/close");
-    }
-    /* @Bean
+    
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable().authorizeHttpRequests().requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/user/**").hasRole("USER").anyRequest().permitAll()
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/login/access").and().logout().logoutSuccessUrl("/close");
         return httpSecurity.build();
-    } */
+    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
