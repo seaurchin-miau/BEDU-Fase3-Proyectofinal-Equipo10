@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BEDU eCommerce</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css"/>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{css/products.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Page Content -->
+<div th:fragment="productos">
+
+    <div class="container">
+
+        <div class="px-4 my-5 text-center border-bottom">
+            <h1 class="display-4 fw-bold text-body-emphasis">ThunderMart</h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">Compra tus equipos y sigue programando como nunca antes!</p>
+            </div>
+
+        </div>
+
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <!-- Toggle button -->
+                    <button class="btn btn-outline-secondary mb-3 w-100 d-lg-none collapsed" type="button"
+                            data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span>Show filter</span>
+                    </button>
+                    <!-- Collapsible wrapper -->
+                    <div class="collapse card d-lg-block mb-5" id="navbarSupportedContent">
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button text-dark bg-light" type="button"
+                                            data-mdb-toggle="collapse" data-mdb-target="#panelsStayOpen-collapseOne"
+                                            aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                        Related items
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                                     aria-labelledby="headingOne" style="">
+                                    <div class="accordion-body">
+                                        <ul class="list-unstyled">
+                                            <li><a th:href="@{/administrador}" class="text-dark">Electronics </a></li>
+                                            <li><a th:href="@{/filtro/{nombre} (nombre='Televisor') }" class="text-dark">Televisor </a></li>
+                                            <li><a href="#" class="text-dark">Books, Magazines </a></li>
+                                            <li><a href="#" class="text-dark">Men's clothing </a></li>
+                                            <li><a href="#" class="text-dark">Interiors items </a></li>
+                                            <li><a href="#" class="text-dark">Underwears </a></li>
+                                            <li><a href="#" class="text-dark">Shoes for men </a></li>
+                                            <li><a href="#" class="text-dark">Accessories </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button text-dark bg-light" type="button"
+                                            data-mdb-toggle="collapse" data-mdb-target="#panelsStayOpen-collapseTwo"
+                                            aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                                        Brands
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show"
+                                     aria-labelledby="headingTwo">
+                                    <div class="accordion-body">
+                                        <div>
+                                            <!-- Checked checkbox -->
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="flexCheckChecked1" checked="">
+                                                <label class="form-check-label" for="flexCheckChecked1">Mercedes</label>
+                                                <span class="badge badge-secondary float-end">120</span>
+                                            </div>
+                                            <!-- Checked checkbox -->
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="flexCheckChecked2" checked="">
+                                                <label class="form-check-label" for="flexCheckChecked2">Toyota</label>
+                                                <span class="badge badge-secondary float-end">15</span>
+                                            </div>
+                                            <!-- Checked checkbox -->
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="flexCheckChecked3" checked="">
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked3">Mitsubishi</label>
+                                                <span class="badge badge-secondary float-end">35</span>
+                                            </div>
+                                            <!-- Checked checkbox -->
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="flexCheckChecked4" checked="">
+                                                <label class="form-check-label" for="flexCheckChecked4">Nissan</label>
+                                                <span class="badge badge-secondary float-end">89</span>
+                                            </div>
+                                            <!-- Default checkbox -->
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">Honda</label>
+                                                <span class="badge badge-secondary float-end">30</span>
+                                            </div>
+                                            <!-- Default checkbox -->
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">Suzuki</label>
+                                                <span class="badge badge-secondary float-end">30</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button text-dark bg-light" type="button"
+                                            data-mdb-toggle="collapse" data-mdb-target="#panelsStayOpen-collapseThree"
+                                            aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
+                                        Price
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show"
+                                     aria-labelledby="headingThree">
+                                    <div class="accordion-body">
+                                        <div class="range">
+                                            <input type="range" class="form-range" id="customRange1">
+                                            <span class="thumb" style="left: calc(50% + 0.5px);"><span
+                                                    class="thumb-value">50</span></span></div>
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <p class="mb-0">
+                                                    Min
+                                                </p>
+                                                <div class="form-outline">
+                                                    <input type="number" id="typeNumber" class="form-control">
+                                                    <label class="form-label" for="typeNumber"
+                                                           style="margin-left: 0px;">$0</label>
+                                                    <div class="form-notch">
+                                                        <div class="form-notch-leading" style="width: 9px;"></div>
+                                                        <div class="form-notch-middle" style="width: 22.4px;"></div>
+                                                        <div class="form-notch-trailing"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <p class="mb-0">
+                                                    Max
+                                                </p>
+                                                <div class="form-outline">
+                                                    <input type="number" id="typeNumber" class="form-control">
+                                                    <label class="form-label" for="typeNumber"
+                                                           style="margin-left: 0px;">$1,0000</label>
+                                                    <div class="form-notch">
+                                                        <div class="form-notch-leading" style="width: 9px;"></div>
+                                                        <div class="form-notch-middle" style="width: 53.6px;"></div>
+                                                        <div class="form-notch-trailing"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-white w-100 border border-secondary">
+                                            apply
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button text-dark bg-light" type="button"
+                                            data-mdb-toggle="collapse" data-mdb-target="#panelsStayOpen-collapseThree"
+                                            aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
+                                        Categoria
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show"
+                                     aria-labelledby="headingThree">
+                                    <div class="accordion-body">
+                                        <div class="row mb-3">
+                                            <form role="search" method="post" th:action="@{/searchDescripcion}">
+                                                <input class="form-control me-2" type="search" placeholder="Buscar"
+                                                       aria-label="Search" name="nombre"
+                                                       autocomplete="off">
+                                                <button type="submit"
+                                                        class="btn btn-white w-100 border border-secondary">
+                                                    Aplicar
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-9">
+                    <div class="row">
+                        <!-- Product Item -->
+                        <div th:each="producto: ${productos}" class="product-list col-xs-12 border rounded">
+                            <div class="product-item">
+                                <div class="item-overlay">
+                                    <div class="clickable">
+                                        <a href="#">Leather laptop bag navy</a>
+                                    </div>
+                                </div>
+                                <div class="image">
+                                    <a href="#"><img th:src="@{/images/{img} (img=${producto.imagen})} "
+                                                     alt="Product 1"></a>
+
+                                </div>
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="#" th:text="${producto.nombre}"></a>
+                                    </div>
+                                    <div class="description" th:text="${producto.descripcion}">
+                                        <p>Stop your co-workers in their tracks with the stunning new 30-inch diagonal
+                                            HP LP3065 Flat Panel..</p>
+                                    </div>
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o"></i></span>
+                                    </div>
+                                    <div class="price">
+                                        <span th:text="${producto.precio}">$866.00</span>
+                                    </div>
+                                </div>
+                                <div class="cart">
+
+                                    <a th:href="@{/productohome/{id}  (id=${producto.id})  }"
+                                       class="btn btn-warning pull-left  bold-btn ">
+                                        Ver Producto</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--/ Product Item -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<!-- /.container -->
+
+
+</body>
+
+</html>

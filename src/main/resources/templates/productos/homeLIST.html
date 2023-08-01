@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BEDU eCommerce</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{css/products.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Page Content -->
+<div th:fragment="productos">
+
+    <div class="container">
+
+        <div class="px-4 my-5 text-center border-bottom">
+            <h1 class="display-4 fw-bold text-body-emphasis">ThunderMart</h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">Compra tus equipos y sigue programando como nunca antes!</p>
+            </div>
+
+        </div>
+
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 hidden-xs">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item">Shoes</a>
+                        <a href="#" class="list-group-item">- Satchel</a>
+                        <a href="#" class="list-group-item">- Tote</a>
+                        <a href="#" class="list-group-item">- Shoulder</a>
+                        <a href="#" class="list-group-item">- Clutch &amp; Mini</a>
+                    </div>
+
+                    <div class="product-sidebar">
+                        <h5 class="text-center">Featured</h5>
+                        <!-- Featured Product Item -->
+                        <div class="product-item">
+                            <div class="image">
+                                <a href="#"><img src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                                                 alt="Product 4"></a>
+                            </div>
+                            <div class="name">
+                                <a href="#">Leather laptop bag</a>
+                            </div>
+                            <div class="price">
+                                <span>$722.00</span>
+                            </div>
+                        </div>
+                        <!--/ Featured Product Item -->
+
+                        <!-- Featured Product Item -->
+                        <div class="product-item">
+                            <div class="image">
+                                <a href="#"><img src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                                 alt="Product 2"></a>
+                            </div>
+                            <div class="name">
+                                <a href="#">Leather laptop bag navy</a>
+                            </div>
+                            <div class="price">
+                                <span class="price-new">$866.00</span>
+                            </div>
+                        </div>
+                        <!--/ Featured Product Item -->
+
+                        <!-- Featured Product Item -->
+                        <div class="product-item">
+                            <div class="image">
+                                <a href="#"><img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                 alt="Product 3"></a>
+                            </div>
+                            <div class="name">
+                                <a href="#">Soft leather laptop bag</a>
+                            </div>
+                            <div class="price">
+                                <span>$962.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="btn-group hidden-xs">
+                                <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip"
+                                        data-container="body" title="List View"><i class="fa fa-th-list"></i></button>
+                                <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip"
+                                        data-container="body" title="Grid View"><i class="fa fa-th"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 text-right">
+                            <label class="control-label" for="input-sort">Sort By:</label>
+                        </div>
+                        <div class="col-sm-3 text-right">
+                            <select id="input-sort" class="form-control">
+                                <option value="" selected="selected">Default</option>
+                                <option value="">Name</option>
+                                <option value="">Date</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-1 text-right">
+                            <label class="control-label" for="input-limit">Show:</label>
+                        </div>
+                        <div class="col-sm-2 text-right">
+                            <select id="input-limit" class="form-control">
+                                <option value="" selected="selected">9</option>
+                                <option value="">15</option>
+                                <option value="">25</option>
+                                <option value="">50</option>
+                                <option value="">100</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+
+                        <!-- Product Item -->
+                        <div th:each="producto: ${productos}" class="product-list col-xs-12">
+                            <div class="product-item">
+                                <div class="item-overlay">
+                                    <div class="clickable">
+                                        <a href="#">Leather laptop bag navy</a>
+                                    </div>
+                                </div>
+                                <div class="image">
+                                    <a href="#"><img th:src="@{/images/{img} (img=${producto.imagen})} "
+                                                     alt="Product 1"></a>
+
+                                </div>
+                                <div class="caption">
+                                    <div class="name">
+                                        <a href="#" th:text="${producto.nombre}"></a>
+                                    </div>
+                                    <div class="description" th:text="${producto.descripcion}">
+                                        <p>Stop your co-workers in their tracks with the stunning new 30-inch diagonal
+                                            HP LP3065 Flat Panel..</p>
+                                    </div>
+                                    <div class="rating">
+                                        <span class="fa fa-stack"><i class="fa fa-star"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star"></i></span>
+                                        <span class="fa fa-stack"><i class="fa fa-star-o"></i></span>
+                                    </div>
+                                    <div class="price">
+                                        <span th:text="${producto.precio}">$866.00</span>
+                                    </div>
+                                </div>
+                                <div class="cart">
+
+                                    <a th:href="@{/productohome/{id}  (id=${producto.id})  }"
+                                       class="btn btn-warning pull-left  bold-btn ">
+                                        Ver Producto</a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/ Product Item -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- https://codepen.io/design007/pen/BaRPZgJ -->
+    <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative">
+        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+            <div class="col hp" th:each="producto: ${productos}">
+                <div class="card h-100 shadow-sm">
+
+                    <!--<img src="https://m.media-amazon.com/images/I/81gK08T6tYL._AC_SL1500_.jpg" class="card-img-top" alt="product.title" />-->
+                    <img class="card-img-top" th:src="@{/images/{img} (img=${producto.imagen})} " alt="">
+
+
+                    <div class="label-top shadow-sm">
+                        <a class="text-white" target="_blank" th:text="${producto.nombre}"></a>
+                    </div>
+                    <div class="card-body">
+                        <div class="clearfix mb-3">
+                                <span class="float-start badge rounded-pill bg-success"
+                                      th:text="${producto.precio}">$</span>
+
+                        </div>
+                        <h5 class="card-title">
+                            <a target="_blank" th:text="${producto.descripcion}"></a>
+                        </h5>
+
+                        <div class="d-grid gap-2 my-4">
+
+                            <a th:href="@{/productohome/{id}  (id=${producto.id})  }"
+                               class="btn btn-warning bold-btn">ver producto</a>
+
+                        </div>
+                        <div class="clearfix mb-1">
+
+                            <span class="float-start"><a href="#"><i class="fas fa-question-circle"></i></a></span>
+
+                            <span class="float-end">
+              <i class="far fa-heart" style="cursor: pointer"></i>
+
+            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>

@@ -9,11 +9,11 @@
 		<version>3.1.1</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.curso.ecommerce</groupId>
+	<groupId>bedu.proyecto.ecommerce</groupId>
 	<artifactId>spring-ecommerce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-ecommerce</name>
-	<description>Curso de Spring proyecto ecommerce</description>
+	<description>ThunderMart</description>
 
 	<properties>
 		<java.version>17</java.version>
